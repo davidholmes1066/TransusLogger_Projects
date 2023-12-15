@@ -12,9 +12,11 @@
 #include <avr/io.h>
 #include <stdint.h>
 
+uint8_t check_UART(void);
 void init_UART(void);
 void write8_UART(uint8_t data);
 uint8_t read_UART(void);
+void writeF_UART(float data);
 
 
 #endif /* UART_H_ */

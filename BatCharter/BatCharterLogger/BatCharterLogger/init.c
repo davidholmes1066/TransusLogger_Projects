@@ -3,12 +3,15 @@
 
 void init_LED(void)
 {
-	PORTC.DIRSET |= (0x01);										//Set PC0 MCU LED as outputs
-	PORTD.DIRSET |= (0x80);										//Set PD7 Status LED as output
+	PORTC.DIRSET |= (0x01);													//Set PC0 MCU LED as outputs
+	PORTD.DIRSET |= (0x80);													//Set PD7 Status LED as output
+	PORTA.DIRSET = PIN7_bm;													//Set PA7 as Bat1 measurement status light
+	PORTA.DIRSET = PIN6_bm;													//Set PA6 as Bat2 measurement status light
 	
-	PORTC.OUTSET |= (0x01);										//Enable MCU LED
-	//PORTD.OUTSET |= (0x80);										//Enable Status LED
+	PORTC.OUTSET |= (0x01);													//Enable MCU LED
+	//PORTD.OUTSET |= (0x80);												//Enable Status LED
 }
+
 void init_CLK(void)
 {
 	OSC.CTRL |= OSC_RC32MEN_bm;												// Enable internal 32 MHz oscillator

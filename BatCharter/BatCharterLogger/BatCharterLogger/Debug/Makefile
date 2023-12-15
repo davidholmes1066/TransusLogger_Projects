@@ -37,6 +37,9 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../ADC.c \
+../DAC.c \
+../handle.c \
 ../init.c \
 ../main.c \
 ../UART.c
@@ -49,21 +52,33 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+ADC.o \
+DAC.o \
+handle.o \
 init.o \
 main.o \
 UART.o
 
 OBJS_AS_ARGS +=  \
+ADC.o \
+DAC.o \
+handle.o \
 init.o \
 main.o \
 UART.o
 
 C_DEPS +=  \
+ADC.d \
+DAC.d \
+handle.d \
 init.d \
 main.d \
 UART.d
 
 C_DEPS_AS_ARGS +=  \
+ADC.d \
+DAC.d \
+handle.d \
 init.d \
 main.d \
 UART.d
@@ -82,6 +97,27 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+./ADC.o: .././ADC.c
+	@echo Building file: $<
+	@echo Invoking: XC8 C Compiler : 2.36
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATxmega16E5  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.4.119\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATxmega16E5__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./DAC.o: .././DAC.c
+	@echo Building file: $<
+	@echo Invoking: XC8 C Compiler : 2.36
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATxmega16E5  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.4.119\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATxmega16E5__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./handle.o: .././handle.c
+	@echo Building file: $<
+	@echo Invoking: XC8 C Compiler : 2.36
+	$(QUOTE)C:\Program Files\Microchip\xc8\v2.36\bin\xc8-cc.exe$(QUOTE)  -mcpu=ATxmega16E5  -mdfp="C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAE_DFP\1.4.119\xc8"  -c -x c -funsigned-char -funsigned-bitfields -mext=cci -D__ATxmega16E5__ -DDEBUG  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./init.o: .././init.c
 	@echo Building file: $<
 	@echo Invoking: XC8 C Compiler : 2.36
